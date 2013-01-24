@@ -2,16 +2,16 @@
 #include <stdlib.h>
 #include <pwd.h>
 #include <string.h>
+#include "getpwmom.h"
 
-struct passwd *mom_do_init(void);
 
 int main(int argc, char **argv){
   struct passwd *mom;
 
   printf("starting\n");
-  mom = mom_do_init();
+  mom = MOM_ENTRY();
 
-  printf("user %s, shell %s\n", mom->pw_name, mom->pw_shell);
+  printf("user %s, uid %d, shell %s\n", mom->pw_name, MOM_GETUID(), mom->pw_shell);
 
   return 0;
 }
