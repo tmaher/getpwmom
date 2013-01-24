@@ -1,2 +1,4 @@
 ask_mom
 *.o
+*.so.*
+lib

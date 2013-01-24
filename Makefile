@@ -6,8 +6,14 @@ ask_mom: ask_mom.o getpwmom.o
 clean:
 	$(RM) -f ask_mom *.o
 
-all: ask_mom
+test_dep: ask_mom
 
-test: all
+test: test_dep
 	./ask_mom
+
+lib/libgetpwmom.so: getpwmom.o
+	mkdir -p lib
+	$(CC) -fPIC -shared -Wl,-soname,libgetpwmom.so.1 -o lib/libgetpwmom.so.1 $^
+
+all: lib/libgetpwmom.so
 
